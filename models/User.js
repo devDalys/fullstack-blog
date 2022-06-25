@@ -1,23 +1,24 @@
-import { turquoise } from 'color-name';
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
-	fullName: {
-		type: String,
-		required: true
+const userSchema = new mongoose.Schema(
+	{
+		fullName: {
+			type: String,
+			required: true
+		},
+		email: {
+			type: String,
+			required: true,
+			unique: true
+		},
+		passwordHash: {
+			type: String,
+			required: true
+		},
+		avatarUrl: String
 	},
-	email: {
-		required: true,
-		unique: true
-	},
-	passwordHash: {
-		type: String,
-		required: true
-	},
-  avatarUrl:String,
-
-},{
-  timestamps: true,
-
-});
-export default mongoose.model('User', userSchema)
+	{
+		timestamps: true
+	}
+);
+export default mongoose.model('User', userSchema);
